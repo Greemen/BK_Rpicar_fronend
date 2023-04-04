@@ -8,6 +8,10 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
   <script src="https://unpkg.com/blockly/python_compressed"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/requireSocket.js"></script>
+  <script src="./js/responseSocket.js"></script>
+  <script src="./js/manual.js"></script>
   <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
   <meta name="generator" content="Google Web Designer 15.2.1.0306">
   <meta name="template" content="Expandable 3.0.0">
@@ -201,29 +205,46 @@
       position: absolute;
       width: 48px;
       height: 48px;
-      top: 222px;
-      left: 403px;
+      left: 139px;
+      top: 156px;
+      opacity: 1;
     }
     .gwd-image-1y4k {
       position: absolute;
       width: 48px;
       height: 48px;
-      left: 403px;
-      top: 402px;
+      left: 139px;
+      top: 252px;
     }
     .gwd-image-42og {
       position: absolute;
       width: 48px;
       height: 48px;
-      left: 494px;
-      top: 320px;
+      left: 187px;
+      top: 204px;
     }
     .gwd-image-1kre {
       position: absolute;
       width: 48px;
       height: 48px;
-      top: 320px;
-      left: 322px;
+      left: 91px;
+      top: 204px;
+    }
+    .gwd-image-1nqs {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      left: 100%;
+      transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
+      top: 30px;
+    }
+    .gwd-image-1nli {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      left: 100%;
+      transform: translate(-100%, 0%) translate3d(-20px, 0px, 0px);
+      top: 15px;
     }
     @media (width: 550px) and (height: 400px) {}
   </style>
@@ -244,6 +265,34 @@
     gwd.start = function(event) {
       showCode();
     };
+    gwd.auto_Baseline_directions_car_black_48dpClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_2', 'fade', 500, 'linear', 'top');
+    };
+    gwd.auto_LogoutClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_1', 'none', 1000, 'linear', 'top');
+    };
+    gwd.ArrowUp = function(event) {
+      Manual.sendValue['RC'] = 'forward'
+      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
+    };
+    gwd.ArrowDown = function(event) {
+      Manual.sendValue['RC'] = 'backward'
+      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
+    };
+    gwd.ArrowLeft = function(event) {
+      Manual.sendValue['RC'] = 'turn_left'
+      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
+    };
+    gwd.ArrowRight = function(event) {
+      Manual.sendValue['RC'] = 'turn_right'
+      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
+    };
+    gwd.ArrowRelease = function(event) {
+      Manual.sendValue['RC'] = 'rest'
+      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
+    };
   </script>
   <script type="text/javascript" gwd-events="registration">
     // Support code for event handling in Google Web Designer
@@ -252,11 +301,31 @@
       gwd.actions.events.addHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
       gwd.actions.events.addHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
       gwd.actions.events.addHandler('gwd-imagebutton_1', 'click', gwd.start, false);
+      gwd.actions.events.addHandler('logout', 'click', gwd.auto_LogoutClick, false);
+      gwd.actions.events.addHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
+      gwd.actions.events.addHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
+      gwd.actions.events.addHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.addHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
+      gwd.actions.events.addHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.addHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
+      gwd.actions.events.addHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.addHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
+      gwd.actions.events.addHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
     };
     gwd.actions.events.deregisterEventHandlers = function(event) {
       gwd.actions.events.removeHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
       gwd.actions.events.removeHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
       gwd.actions.events.removeHandler('gwd-imagebutton_1', 'click', gwd.start, false);
+      gwd.actions.events.removeHandler('logout', 'click', gwd.auto_LogoutClick, false);
+      gwd.actions.events.removeHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
+      gwd.actions.events.removeHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
+      gwd.actions.events.removeHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.removeHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
+      gwd.actions.events.removeHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.removeHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
+      gwd.actions.events.removeHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
+      gwd.actions.events.removeHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
+      gwd.actions.events.removeHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
     };
     document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
     document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
@@ -277,6 +346,9 @@
       <div class="gwd-page-content page1-content gwd-div-qe58">
         <div id="blocklyDiv" style="position: absolute;"></div>
         <script>
+          
+          requireWebsocket.connect();
+
           Blockly.Blocks['string_length'] = {
             init: function() {
               this.jsonInit({
@@ -359,17 +431,20 @@
     </gwd-page>
     <gwd-page id="page1_2" class="gwd-page-wrapper gwd-lightbox gwd-page-ynra" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="manual">
       <div class="gwd-page-content gwd-div-8hb6">
-        <gwd-image id="arrow_upward" source="assets/arrow_upward.png" scaling="stretch" class="gwd-image-1vx9"></gwd-image>
-        <gwd-image id="arrow_downward" source="assets/arrow_downward.png" scaling="stretch" class="gwd-image-1y4k"></gwd-image>
-        <gwd-image id="arrow_forward" source="assets/arrow_forward.png" scaling="stretch" class="gwd-image-42og"></gwd-image>
-        <gwd-image id="arrow_back" source="assets/arrow_back.png" scaling="stretch" class="gwd-image-1kre"></gwd-image>
+        <gwd-image id="arrow_upward" source="assets/arrow_upward.png" scaling="contain" class="gwd-image-1vx9" alignment="center" oncontextmenu="return false;"></gwd-image>
+        <gwd-image id="arrow_downward" source="assets/arrow_downward.png" scaling="contain" class="gwd-image-1y4k" alignment="center" oncontextmenu="return false;"></gwd-image>
+        <gwd-image id="arrow_forward" source="assets/arrow_forward.png" scaling="contain" class="gwd-image-42og" alignment="center" oncontextmenu="return false;"></gwd-image>
+        <gwd-image id="arrow_back" source="assets/arrow_back.png" scaling="contain" class="gwd-image-1kre" alignment="center" oncontextmenu="return false;"></gwd-image>
+        <gwd-image id="logout" source="assets/logout.png" scaling="stretch" class="gwd-image-1nqs"></gwd-image>
       </div>
     </gwd-page>
     <gwd-page id="page1_1" class="gwd-page-wrapper gwd-lightbox gwd-page-ch3c" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="welcomePage">
       <div class="gwd-page-content gwd-div-9po6">
         <gwd-image source="assets/01_zf_logo.png" scaling="contain" id="01_zf_logo_1" class="gwd-image-1hzg gwd-image-14cx gwd-gen-1mydgwdanimation"></gwd-image>
         <gwd-image id="logo-utb-frontio-feed" source="assets/logo-utb-frontio-feed.png" scaling="contain" class="gwd-image-1t5c gwd-gen-filtgwdanimation"></gwd-image>
-        <h2 class="gwd-span-147h" gwd-text-effect="[{&amp;quot;id&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;drop-in&amp;quot;,&amp;quot;startTimeMs&amp;quot;:1000,&amp;quot;durationMs&amp;quot;:2000,&amp;quot;direction&amp;quot;:&amp;quot;in&amp;quot;,&amp;quot;tokenType&amp;quot;:&amp;quot;character&amp;quot;,&amp;quot;tokenGroups&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;tokens-per-group&amp;quot;,&amp;quot;value&amp;quot;:1},&amp;quot;shuffleSeed&amp;quot;:0,&amp;quot;easingData&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;linear&amp;quot;,&amp;quot;cubicBezierPoints&amp;quot;:[0.25,0.25,0.75,0.75]},&amp;quot;overlap&amp;quot;:0.38,&amp;quot;parameters&amp;quot;:{&amp;quot;dimension&amp;quot;:&amp;quot;Z&amp;quot;,&amp;quot;perspective&amp;quot;:20,&amp;quot;initialTranslation&amp;quot;:10,&amp;quot;opacity&amp;quot;:0}}]">Tap to START</h2></div>
+        <h2 class="gwd-span-147h" gwd-text-effect="[{&amp;quot;id&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;drop-in&amp;quot;,&amp;quot;startTimeMs&amp;quot;:1000,&amp;quot;durationMs&amp;quot;:2000,&amp;quot;direction&amp;quot;:&amp;quot;in&amp;quot;,&amp;quot;tokenType&amp;quot;:&amp;quot;character&amp;quot;,&amp;quot;tokenGroups&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;tokens-per-group&amp;quot;,&amp;quot;value&amp;quot;:1},&amp;quot;shuffleSeed&amp;quot;:0,&amp;quot;easingData&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;linear&amp;quot;,&amp;quot;cubicBezierPoints&amp;quot;:[0.25,0.25,0.75,0.75]},&amp;quot;overlap&amp;quot;:0.38,&amp;quot;parameters&amp;quot;:{&amp;quot;dimension&amp;quot;:&amp;quot;Z&amp;quot;,&amp;quot;perspective&amp;quot;:20,&amp;quot;initialTranslation&amp;quot;:10,&amp;quot;opacity&amp;quot;:0}}]">Tap to START</h2>
+        <gwd-image id="baseline_directions_car_black_48dp" source="assets/baseline_directions_car_black_48dp.png" scaling="stretch" class="gwd-image-1nli"></gwd-image>
+      </div>
     </gwd-page>
   </gwd-pagedeck>
   <script type="text/javascript" id="gwd-init-code">
@@ -403,5 +478,5 @@
     })();
   </script>
 </body>
-
+  
 </html>
