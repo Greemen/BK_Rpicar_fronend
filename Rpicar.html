@@ -4,8 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title>Rpicar</title>
-  <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
+  <link href="gwdattached_style.css" rel="stylesheet" data-version="2" data-exports-type="gwd-attached">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+  <script src="https://unpkg.com/blockly/python_compressed"></script>
+  <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
   <meta name="generator" content="Google Web Designer 15.2.1.0306">
   <meta name="template" content="Expandable 3.0.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,17 +105,21 @@
       0% {
         --gwd-hidden-css-filter: none;
         filter: none;
+        transform: translate(-50%, 0%);
+        transform-origin: 267.43px 200.75px 0px;
         animation-timing-function: linear;
         --gwd-visibility-range: 0, ;
       }
       100% {
         --gwd-hidden-css-filter: none;
         filter: hue-rotate(360deg);
+        transform: translate(-50%, 0%);
+        transform-origin: 200.688px 200.75px 0px;
         animation-timing-function: linear;
       }
     }
     #page1_1.gwd-play-animation .gwd-gen-1mydgwdanimation {
-      animation: 1.6s linear 0s 1 normal forwards running gwd-gen-1mydgwdanimation_gwd-keyframes;
+      animation: 2s linear 0s 1 normal forwards running gwd-gen-1mydgwdanimation_gwd-keyframes;
     }
     .gwd-image-1hzg {
       background-image: none;
@@ -120,16 +127,103 @@
       mix-blend-mode: normal;
       --gwd-hidden-css-filter: none;
       visibility: inherit;
-      transform-origin: 129.25px 86.1562px;
       filter: none;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) translate3d(0px, 0px, 0px);
       position: absolute;
+      top: 20px;
+      transform-origin: 267.43px 200.75px 0px;
+      transform: translate(-50%, 0%);
     }
     .gwd-image-14cx {
       width: 47%;
       height: 43.08%;
+      min-width: 0px;
+      min-height: 0px;
+    }
+    .gwd-imagebutton-1svb {
+      position: absolute;
+      width: 50px;
+      height: 47px;
+      left: 100%;
+      top: 0px;
+      transform: translate(-100%, 0%);
+    }
+    .gwd-image-1t5c {
+      position: absolute;
+      width: 1000px;
+      left: 50%;
+      top: 100%;
+      height: 316px;
+      transform-origin: 791px 0px 0px;
+      transform: translate(-50%, -100%) translate3d(754px, 5px, 0px) rotateZ(-175.504deg) scale3d(1.3856, 1, 1);
+    }
+    .gwd-span-bbe1 {
+      line-height: 0px;
+      letter-spacing: 80px;
+    }
+    .gwd-span-147h {
+      position: absolute;
+      height: 58px;
+      text-align: justify;
+      left: 50%;
+      top: 50%;
+      color: rgb(0, 0, 255);
+      line-height: 50px;
+      font-size: 17px;
+      transform-origin: 50% 50% 0px;
+      width: 112px;
+      transform: translate(-50%, -50%);
+      font-weight: normal;
+      font-family: Ubuntu;
+    }
+    @keyframes gwd-gen-filtgwdanimation_gwd-keyframes {
+      0% {
+        transform: translate(-50%, -100%) translate3d(754px, 5px, 0px) rotateZ(-175.504deg) scale3d(1.3856, 1, 1);
+        animation-timing-function: ease-in;
+      }
+      100% {
+        transform: translate(-50%, -100%) translate3d(0px, 0px, 0px) rotateZ(-0.2068deg) scale3d(1, 1, 1);
+        animation-timing-function: linear;
+      }
+    }
+    #page1_1.gwd-play-animation .gwd-gen-filtgwdanimation {
+      animation: 1.2s linear 0s 1 normal forwards running gwd-gen-filtgwdanimation_gwd-keyframes;
+    }
+    .gwd-page-ynra {
+      width: 100%;
+      height: 100%;
+    }
+    .gwd-div-8hb6 {
+      width: 100%;
+      height: 100%;
+    }
+    .gwd-image-1vx9 {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 222px;
+      left: 403px;
+    }
+    .gwd-image-1y4k {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      left: 403px;
+      top: 402px;
+    }
+    .gwd-image-42og {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      left: 494px;
+      top: 320px;
+    }
+    .gwd-image-1kre {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 320px;
+      left: 322px;
     }
     @media (width: 550px) and (height: 400px) {}
   </style>
@@ -138,6 +232,7 @@
   <script data-source="gwdpagedeck_min.js" data-version="14" data-exports-type="gwd-pagedeck" src="gwdpagedeck_min.js"></script>
   <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
   <script type="text/javascript" gwd-events="handlers">
+    window.gwd = window.gwd || {};
     gwd.auto_01_zf_logo_1Click = function(event) {
       // GWD Predefined Function
       gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1', 'fade', 1000, 'ease-in', 'top');
@@ -146,6 +241,9 @@
       // GWD Predefined Function
       gwd.actions.gwdPagedeck.goToNextPage('pagedeck', false, 'fade', 1000, 'ease-in', 'top');
     };
+    gwd.start = function(event) {
+      showCode();
+    };
   </script>
   <script type="text/javascript" gwd-events="registration">
     // Support code for event handling in Google Web Designer
@@ -153,59 +251,87 @@
     gwd.actions.events.registerEventHandlers = function(event) {
       gwd.actions.events.addHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
       gwd.actions.events.addHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
+      gwd.actions.events.addHandler('gwd-imagebutton_1', 'click', gwd.start, false);
     };
     gwd.actions.events.deregisterEventHandlers = function(event) {
       gwd.actions.events.removeHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
       gwd.actions.events.removeHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
+      gwd.actions.events.removeHandler('gwd-imagebutton_1', 'click', gwd.start, false);
     };
     document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
     document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
   </script>
   <script data-source="gwdimage_min.js" data-version="17" data-exports-type="gwd-image" src="gwdimage_min.js"></script>
+  <script data-source="gwdimagebutton_min.js" data-version="13" data-exports-type="gwd-imagebutton" src="gwdimagebutton_min.js"></script>
+  <script data-source="gwdattached_min.js" data-version="2" data-exports-type="gwd-attached" src="gwdattached_min.js"></script>
+  <script data-source="gwdtexthelper_min.js" data-version="18" data-exports-type="gwd-text-helper" src="gwdtexthelper_min.js"></script>
+  <script gwd-text-fitting-runtime="" src="gwd-text-fitting.js"></script>
+  <script gwd-text-effects-runtime="" src="gwd-text-effects.js"></script>
 </head>
 
 <body id="blocklyArea" class="document-body">
+  <gwd-text-helper id="gwd-text-helper_1" fit-font-size-for-selector="[data-gwd-fit-font-size],[gwd-fitting-truncate]" data-gwd-fit-font-size="false"></gwd-text-helper>
   <script gwd-served-sizes="" type="application/json">["550x400"]</script>
   <gwd-pagedeck class="gwd-page-container" id="pagedeck" default-page="page1_1">
     <gwd-page id="page1" class="gwd-page-wrapper page1-content gwd-lightbox gwd-page-1fuh" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="blockly">
       <div class="gwd-page-content page1-content gwd-div-qe58">
         <div id="blocklyDiv" style="position: absolute;"></div>
         <script>
-          var toolbox = {
-            "kind": "flyoutToolbox",
-            "contents": [{
-              "kind": "block",
-              "type": "controls_if"
-            }, {
-              "kind": "block",
-              "type": "logic_compare"
-            }, {
-              "kind": "block",
-              "type": "controls_repeat_ext"
-            }, {
-              "kind": "block",
-              "type": "math_number",
-              "fields": {
-                "NUM": 123
-              }
-            }, {
-              "kind": "block",
-              "type": "math_arithmetic"
-            }, {
-              "kind": "block",
-              "type": "text"
-            }, {
-              "kind": "block",
-              "type": "text_print"
-            }, ]
+          Blockly.Blocks['string_length'] = {
+            init: function() {
+              this.jsonInit({
+                "message0": 'length of %1',
+                "args0": [{
+                  "type": "input_value",
+                  "name": "VALUE",
+                  "check": "String"
+                }],
+                "output": "Number",
+                "colour": 160,
+                "tooltip": "Returns number of letters in the provided text.",
+                "helpUrl": "http://www.w3schools.com/jsref/jsref_length_string.asp"
+              });
+            }
           };
+
+          var toolbox = {
+            "kind": "categoryToolbox",
+            "contents": [{
+              "kind": "category",
+              "name": "Control",
+              "contents": [{
+                "kind": "block",
+                "type": "controls_if"
+              }, ]
+            }, {
+              "kind": "category",
+              "name": "Logic",
+              "contents": [{
+                "kind": "block",
+                "type": "logic_compare"
+              }, {
+                "kind": "block",
+                "type": "logic_operation"
+              }, {
+                "kind": "block",
+                "type": "string_length"
+              }]
+            }]
+          }
 
           var blocklyArea = document.getElementById('blocklyArea');
           var blocklyDiv = document.getElementById('blocklyDiv');
-          var demoWorkspace = Blockly.inject(blocklyDiv, {
-            media: './node_modules/blockly/media/',
+          var demoWorkspace = Blockly.inject('blocklyDiv', {
             toolbox: toolbox
           });
+
+          function showCode() {
+            // Generate JavaScript code and display it.
+            Blockly.Python.INFINITE_LOOP_TRAP = null;
+            const pythonCode = Blockly.Python.workspaceToCode(demoWorkspace);
+            alert(pythonCode);
+          }
+
           var onresize = function(e) {
             // Compute the absolute coordinates and dimensions of blocklyArea.
             var element = blocklyArea;
@@ -228,12 +354,22 @@
           window.addEventListener('resize', onresize, false);
           onresize();
         </script>
+        <gwd-imagebutton id="gwd-imagebutton_1" up-image="assets/sports_score_FILL1_wght400_GRAD0_opsz48.png" over-image="" down-image="" scaling="contain" class="gwd-imagebutton-1svb" data-gwd-name="start"></gwd-imagebutton>
+      </div>
+    </gwd-page>
+    <gwd-page id="page1_2" class="gwd-page-wrapper gwd-lightbox gwd-page-ynra" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="manual">
+      <div class="gwd-page-content gwd-div-8hb6">
+        <gwd-image id="arrow_upward" source="assets/arrow_upward.png" scaling="stretch" class="gwd-image-1vx9"></gwd-image>
+        <gwd-image id="arrow_downward" source="assets/arrow_downward.png" scaling="stretch" class="gwd-image-1y4k"></gwd-image>
+        <gwd-image id="arrow_forward" source="assets/arrow_forward.png" scaling="stretch" class="gwd-image-42og"></gwd-image>
+        <gwd-image id="arrow_back" source="assets/arrow_back.png" scaling="stretch" class="gwd-image-1kre"></gwd-image>
       </div>
     </gwd-page>
     <gwd-page id="page1_1" class="gwd-page-wrapper gwd-lightbox gwd-page-ch3c" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="welcomePage">
       <div class="gwd-page-content gwd-div-9po6">
         <gwd-image source="assets/01_zf_logo.png" scaling="contain" id="01_zf_logo_1" class="gwd-image-1hzg gwd-image-14cx gwd-gen-1mydgwdanimation"></gwd-image>
-      </div>
+        <gwd-image id="logo-utb-frontio-feed" source="assets/logo-utb-frontio-feed.png" scaling="contain" class="gwd-image-1t5c gwd-gen-filtgwdanimation"></gwd-image>
+        <h2 class="gwd-span-147h" gwd-text-effect="[{&amp;quot;id&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;drop-in&amp;quot;,&amp;quot;startTimeMs&amp;quot;:1000,&amp;quot;durationMs&amp;quot;:2000,&amp;quot;direction&amp;quot;:&amp;quot;in&amp;quot;,&amp;quot;tokenType&amp;quot;:&amp;quot;character&amp;quot;,&amp;quot;tokenGroups&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;tokens-per-group&amp;quot;,&amp;quot;value&amp;quot;:1},&amp;quot;shuffleSeed&amp;quot;:0,&amp;quot;easingData&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;linear&amp;quot;,&amp;quot;cubicBezierPoints&amp;quot;:[0.25,0.25,0.75,0.75]},&amp;quot;overlap&amp;quot;:0.38,&amp;quot;parameters&amp;quot;:{&amp;quot;dimension&amp;quot;:&amp;quot;Z&amp;quot;,&amp;quot;perspective&amp;quot;:20,&amp;quot;initialTranslation&amp;quot;:10,&amp;quot;opacity&amp;quot;:0}}]">Tap to START</h2></div>
     </gwd-page>
   </gwd-pagedeck>
   <script type="text/javascript" id="gwd-init-code">
