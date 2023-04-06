@@ -7,7 +7,8 @@
   <link href="gwdattached_style.css" rel="stylesheet" data-version="2" data-exports-type="gwd-attached">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-  <script src="https://unpkg.com/blockly/python_compressed"></script>
+  <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+  <script src="./js/interpreter/acorn_interpreter.js"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/requireSocket.js"></script>
   <script src="./js/responseSocket.js"></script>
@@ -149,8 +150,8 @@
       width: 50px;
       height: 47px;
       left: 100%;
-      top: 0px;
-      transform: translate(-100%, 0%);
+      top: 10px;
+      transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
     }
     .gwd-image-1t5c {
       position: absolute;
@@ -346,63 +347,136 @@
       <div class="gwd-page-content page1-content gwd-div-qe58">
         <div id="blocklyDiv" style="position: absolute;"></div>
         <script>
-          
           requireWebsocket.connect();
 
-          Blockly.Blocks['string_length'] = {
+          Blockly.Blocks['drive_forward'] = {
             init: function() {
-              this.jsonInit({
-                "message0": 'length of %1',
-                "args0": [{
-                  "type": "input_value",
-                  "name": "VALUE",
-                  "check": "String"
-                }],
-                "output": "Number",
-                "colour": 160,
-                "tooltip": "Returns number of letters in the provided text.",
-                "helpUrl": "http://www.w3schools.com/jsref/jsref_length_string.asp"
-              });
+              this.appendDummyInput()
+                .appendField("Drive Straight");
+              this.setPreviousStatement(true, null);
+              this.setNextStatement(true, null);
+              this.setColour(230);
+              this.setTooltip('Sends a message to the robot to drive straight');
+              this.setHelpUrl('');
             }
           };
 
+          Blockly.JavaScript['drive_forward'] = function(block) {
+            var code = "Manual.sendValue['RC'] = 'forward';\nrequireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue));\n";
+            return code;
+          };
+          
+
           var toolbox = {
             "kind": "categoryToolbox",
-            "contents": [{
-              "kind": "category",
-              "name": "Control",
-              "contents": [{
-                "kind": "block",
-                "type": "controls_if"
-              }, ]
-            }, {
-              "kind": "category",
-              "name": "Logic",
-              "contents": [{
-                "kind": "block",
-                "type": "logic_compare"
-              }, {
-                "kind": "block",
-                "type": "logic_operation"
-              }, {
-                "kind": "block",
-                "type": "string_length"
-              }]
-            }]
-          }
+            "contents": [
+              {
+                "kind": "category",
+                "name": "Movement",
+                "contents": [
+                  {
+                    "kind": "block",
+                    "type": "drive_forward"
+                  }
+                ]
+              },
+              {
+                "kind": "category",
+                "name": "Logic",
+                "contents": [
+                  {
+                    "kind": "block",
+                    "type": "controls_if"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "logic_compare"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "logic_operation"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "logic_boolean"
+                  }
+                ]
+              },
+              {
+                "kind": "category",
+                "name": "Loops",
+                "contents": [
+                  {
+                    "kind": "block",
+                    "type": "controls_repeat_ext"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "controls_whileUntil"
+                  }
+                ]
+              },
+              {
+                "kind": "category",
+                "name": "Math",
+                "contents": [
+                  {
+                    "kind": "block",
+                    "type": "math_number"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "math_arithmetic"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "math_random_int"
+                  }
+                ]
+              },
+              {
+                "kind": "category",
+                "name": "Text",
+                "contents": [
+                  {
+                    "kind": "block",
+                    "type": "text"
+                  },
+                  {
+                    "kind": "block",
+                    "type": "text_print"
+                  }
+                ]
+              },
+              {
+                "kind": "category",
+                "name": "Variables",
+                "custom": "VARIABLE",
+                "contents": []
+              }
+            ]
+          };
+
 
           var blocklyArea = document.getElementById('blocklyArea');
           var blocklyDiv = document.getElementById('blocklyDiv');
-          var demoWorkspace = Blockly.inject('blocklyDiv', {
+          var workspace = Blockly.inject('blocklyDiv', {
             toolbox: toolbox
           });
-
+          
           function showCode() {
-            // Generate JavaScript code and display it.
-            Blockly.Python.INFINITE_LOOP_TRAP = null;
-            const pythonCode = Blockly.Python.workspaceToCode(demoWorkspace);
-            alert(pythonCode);
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            var myInterpreter = new Interpreter(code);
+            //myInterpreter.run();
+            alert(code);
+            try {
+              eval(code);
+            } catch (e) {
+              alert(e);
+            }
           }
+
+
 
           var onresize = function(e) {
             // Compute the absolute coordinates and dimensions of blocklyArea.
@@ -419,7 +493,7 @@
             blocklyDiv.style.top = y + 'px';
             blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
             blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-            Blockly.svgResize(demoWorkspace);
+            Blockly.svgResize(workspace);
 
             console.log('resize');
           };
@@ -478,5 +552,5 @@
     })();
   </script>
 </body>
-  
+
 </html>
