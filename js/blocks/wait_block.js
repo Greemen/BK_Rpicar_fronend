@@ -49,6 +49,33 @@ function initInterpreterWaitForSeconds(interpreter, globalObject) {
     function(timeInSeconds, callback) {
       // Delay the call to the callback.
       setTimeout(callback, timeInSeconds * 1000);
+      Manual.upArrowEvent();
     });
   interpreter.setProperty(globalObject, 'waitForSeconds', wrapper);
+}
+
+function initInterpreterMove(interpreter, globalObject) {
+  // Ensure function name does not conflict with variable names.
+  Blockly.JavaScript.addReservedWords('upArrowEvent');
+
+  const wrapper2 = interpreter.createNativeFunction(
+    function(callback) {
+      // Delay the call to the callback.      
+      Manual.upArrowEvent();
+      callback;
+    });
+  interpreter.setProperty(globalObject, 'upArrowEvent', wrapper2);
+}
+
+function initInterpreterStop(interpreter, globalObject) {
+  // Ensure function name does not conflict with variable names.
+  Blockly.JavaScript.addReservedWords('stop');
+
+  const wrapper3 = interpreter.createNativeFunction(
+    function(callback) {
+      // Delay the call to the callback.
+      Manual.stop();
+      callback;
+    });
+  interpreter.setProperty(globalObject, 'stop', wrapper3);
 }
