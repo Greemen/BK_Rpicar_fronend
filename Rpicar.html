@@ -1,556 +1,697 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Rpicar</title>
-  <link href="gwdattached_style.css" rel="stylesheet" data-version="2" data-exports-type="gwd-attached">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
-  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-  <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-  <script src="./js/interpreter/acorn_interpreter.js"></script>
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/requireSocket.js"></script>
-  <script src="./js/responseSocket.js"></script>
-  <script src="./js/manual.js"></script>
-  <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
-  <meta name="generator" content="Google Web Designer 15.2.1.0306">
-  <meta name="template" content="Expandable 3.0.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="gwdpage_style.css" rel="stylesheet" data-version="13" data-exports-type="gwd-page">
-  <link href="gwdpagedeck_style.css" rel="stylesheet" data-version="14" data-exports-type="gwd-pagedeck">
-  <style id="gwd-lightbox-style">
-    .gwd-lightbox {
-      overflow: hidden;
-    }
-  </style>
-  <style id="gwd-text-style">
-    p {
-      margin: 0px;
-    }
-    h1 {
-      margin: 0px;
-    }
-    h2 {
-      margin: 0px;
-    }
-    h3 {
-      margin: 0px;
-    }
-  </style>
-  <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0px;
-    }
-    .gwd-page-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-page-content {
-      background-color: transparent;
-      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      transform-style: preserve-3d;
-      position: absolute;
-    }
-    .gwd-page-wrapper {
-      background-color: rgb(255, 255, 255);
-      position: absolute;
-      transform: translateZ(0px);
-    }
-    .page1-content {
-      width: 550px;
-      height: 400px;
-    }
-    .gwd-p-1pq8 {
-      position: absolute;
-      left: 186px;
-      top: 46px;
-    }
-    .gwd-div-3497 {
-      width: 50%;
-      height: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .gwd-table-1ao2 {
-      left: 0px;
-      top: 0px;
-      width: 6px;
-      height: 56px;
-      transform-origin: 50% 50% 0px;
-    }
-    .gwd-div-qe58 {
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-page-1fuh {
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-div-1ex7 {
-      height: 0%;
-      top: 0%;
-      left: 0%;
-      width: 0%;
-      transform-origin: 0px 0px 0px;
-    }
-    .gwd-page-ch3c {
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-div-9po6 {
-      width: 100%;
-      height: 100%;
-    }
-    @keyframes gwd-gen-1mydgwdanimation_gwd-keyframes {
-      0% {
+  <head>
+    <meta charset="utf-8">
+    <title>Rpicar</title>
+    <link href="gwdattached_style.css" rel="stylesheet" data-version="2" data-exports-type="gwd-attached">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="./js/interpreter/acorn_interpreter.js"></script>
+    <script src="./js/requireSocket.js"></script>
+    <script src="./js/responseSocket.js"></script>
+    <script src="./js/manual.js"></script>
+    <script src="./js/blocks/wait_block.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
+    <meta name="generator" content="Google Web Designer 15.2.1.0306">
+    <meta name="template" content="Expandable 3.0.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="gwdpage_style.css" rel="stylesheet" data-version="13" data-exports-type="gwd-page">
+    <link href="gwdpagedeck_style.css" rel="stylesheet" data-version="14" data-exports-type="gwd-pagedeck">
+    <style id="gwd-lightbox-style">
+      .gwd-lightbox {
+        overflow: hidden;
+      }
+    </style>
+    <style id="gwd-text-style">
+      p {
+        margin: 0px;
+      }
+      h1 {
+        margin: 0px;
+      }
+      h2 {
+        margin: 0px;
+      }
+      h3 {
+        margin: 0px;
+      }
+    </style>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+      .gwd-page-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-page-content {
+        background-color: transparent;
+        transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        transform-style: preserve-3d;
+        position: absolute;
+      }
+      .gwd-page-wrapper {
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        transform: translateZ(0px);
+      }
+      .page1-content {
+        width: 550px;
+        height: 400px;
+      }
+      .gwd-p-1pq8 {
+        position: absolute;
+        left: 186px;
+        top: 46px;
+      }
+      .gwd-div-3497 {
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .gwd-table-1ao2 {
+        left: 0px;
+        top: 0px;
+        width: 6px;
+        height: 56px;
+        transform-origin: 50% 50% 0px;
+      }
+      .gwd-div-qe58 {
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-page-1fuh {
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-div-1ex7 {
+        height: 0%;
+        top: 0%;
+        left: 0%;
+        width: 0%;
+        transform-origin: 0px 0px 0px;
+      }
+      .gwd-page-ch3c {
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-div-9po6 {
+        width: 100%;
+        height: 100%;
+      }
+      @keyframes gwd-gen-1mydgwdanimation_gwd-keyframes {
+        0% {
+          --gwd-hidden-css-filter: none;
+          filter: none;
+          transform: translate(-50%, 0%);
+          transform-origin: 267.43px 200.75px 0px;
+          animation-timing-function: linear;
+          --gwd-visibility-range: 0, ;
+        }
+        100% {
+          --gwd-hidden-css-filter: none;
+          filter: hue-rotate(360deg);
+          transform: translate(-50%, 0%);
+          transform-origin: 200.688px 200.75px 0px;
+          animation-timing-function: linear;
+        }
+      }
+      #page1_1.gwd-play-animation .gwd-gen-1mydgwdanimation {
+        animation: 2s linear 0s 1 normal forwards running gwd-gen-1mydgwdanimation_gwd-keyframes;
+      }
+      .gwd-image-1hzg {
+        background-image: none;
+        background-color: transparent;
+        mix-blend-mode: normal;
         --gwd-hidden-css-filter: none;
+        visibility: inherit;
         filter: none;
-        transform: translate(-50%, 0%);
+        left: 50%;
+        position: absolute;
+        top: 20px;
         transform-origin: 267.43px 200.75px 0px;
-        animation-timing-function: linear;
-        --gwd-visibility-range: 0, ;
-      }
-      100% {
-        --gwd-hidden-css-filter: none;
-        filter: hue-rotate(360deg);
         transform: translate(-50%, 0%);
-        transform-origin: 200.688px 200.75px 0px;
-        animation-timing-function: linear;
       }
-    }
-    #page1_1.gwd-play-animation .gwd-gen-1mydgwdanimation {
-      animation: 2s linear 0s 1 normal forwards running gwd-gen-1mydgwdanimation_gwd-keyframes;
-    }
-    .gwd-image-1hzg {
-      background-image: none;
-      background-color: transparent;
-      mix-blend-mode: normal;
-      --gwd-hidden-css-filter: none;
-      visibility: inherit;
-      filter: none;
-      left: 50%;
-      position: absolute;
-      top: 20px;
-      transform-origin: 267.43px 200.75px 0px;
-      transform: translate(-50%, 0%);
-    }
-    .gwd-image-14cx {
-      width: 47%;
-      height: 43.08%;
-      min-width: 0px;
-      min-height: 0px;
-    }
-    .gwd-imagebutton-1svb {
-      position: absolute;
-      width: 50px;
-      height: 47px;
-      left: 100%;
-      top: 10px;
-      transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
-    }
-    .gwd-image-1t5c {
-      position: absolute;
-      width: 1000px;
-      left: 50%;
-      top: 100%;
-      height: 316px;
-      transform-origin: 791px 0px 0px;
-      transform: translate(-50%, -100%) translate3d(754px, 5px, 0px) rotateZ(-175.504deg) scale3d(1.3856, 1, 1);
-    }
-    .gwd-span-bbe1 {
-      line-height: 0px;
-      letter-spacing: 80px;
-    }
-    .gwd-span-147h {
-      position: absolute;
-      height: 58px;
-      text-align: justify;
-      left: 50%;
-      top: 50%;
-      color: rgb(0, 0, 255);
-      line-height: 50px;
-      font-size: 17px;
-      transform-origin: 50% 50% 0px;
-      width: 112px;
-      transform: translate(-50%, -50%);
-      font-weight: normal;
-      font-family: Ubuntu;
-    }
-    @keyframes gwd-gen-filtgwdanimation_gwd-keyframes {
-      0% {
+      .gwd-image-14cx {
+        width: 47%;
+        height: 43.08%;
+        min-width: 0px;
+        min-height: 0px;
+      }
+      .gwd-imagebutton-1svb {
+        position: absolute;
+        width: 50px;
+        height: 47px;
+        left: 100%;
+        top: 10px;
+        transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
+      }
+      .gwd-image-1t5c {
+        position: absolute;
+        width: 1000px;
+        left: 50%;
+        top: 100%;
+        height: 316px;
+        transform-origin: 791px 0px 0px;
         transform: translate(-50%, -100%) translate3d(754px, 5px, 0px) rotateZ(-175.504deg) scale3d(1.3856, 1, 1);
-        animation-timing-function: ease-in;
       }
-      100% {
-        transform: translate(-50%, -100%) translate3d(0px, 0px, 0px) rotateZ(-0.2068deg) scale3d(1, 1, 1);
-        animation-timing-function: linear;
+      .gwd-span-bbe1 {
+        line-height: 0px;
+        letter-spacing: 80px;
       }
-    }
-    #page1_1.gwd-play-animation .gwd-gen-filtgwdanimation {
-      animation: 1.2s linear 0s 1 normal forwards running gwd-gen-filtgwdanimation_gwd-keyframes;
-    }
-    .gwd-page-ynra {
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-div-8hb6 {
-      width: 100%;
-      height: 100%;
-    }
-    .gwd-image-1vx9 {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      left: 139px;
-      top: 156px;
-      opacity: 1;
-    }
-    .gwd-image-1y4k {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      left: 139px;
-      top: 252px;
-    }
-    .gwd-image-42og {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      left: 187px;
-      top: 204px;
-    }
-    .gwd-image-1kre {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      left: 91px;
-      top: 204px;
-    }
-    .gwd-image-1nqs {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      left: 100%;
-      transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
-      top: 30px;
-    }
-    .gwd-image-1nli {
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      left: 100%;
-      transform: translate(-100%, 0%) translate3d(-20px, 0px, 0px);
-      top: 15px;
-    }
-    @media (width: 550px) and (height: 400px) {}
-  </style>
-  <script data-source="gwd_webcomponents_v1_min.js" data-version="2" data-exports-type="gwd_webcomponents_v1" src="gwd_webcomponents_v1_min.js"></script>
-  <script data-source="gwdpage_min.js" data-version="13" data-exports-type="gwd-page" src="gwdpage_min.js"></script>
-  <script data-source="gwdpagedeck_min.js" data-version="14" data-exports-type="gwd-pagedeck" src="gwdpagedeck_min.js"></script>
-  <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
-  <script type="text/javascript" gwd-events="handlers">
-    window.gwd = window.gwd || {};
-    gwd.auto_01_zf_logo_1Click = function(event) {
-      // GWD Predefined Function
-      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1', 'fade', 1000, 'ease-in', 'top');
-    };
-    gwd.auto_01_zf_logo_1Touchstart = function(event) {
-      // GWD Predefined Function
-      gwd.actions.gwdPagedeck.goToNextPage('pagedeck', false, 'fade', 1000, 'ease-in', 'top');
-    };
-    gwd.start = function(event) {
-      showCode();
-    };
-    gwd.auto_Baseline_directions_car_black_48dpClick = function(event) {
-      // GWD Predefined Function
-      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_2', 'fade', 500, 'linear', 'top');
-    };
-    gwd.auto_LogoutClick = function(event) {
-      // GWD Predefined Function
-      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_1', 'none', 1000, 'linear', 'top');
-    };
-    gwd.ArrowUp = function(event) {
-      Manual.sendValue['RC'] = 'forward'
-      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
-    };
-    gwd.ArrowDown = function(event) {
-      Manual.sendValue['RC'] = 'backward'
-      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
-    };
-    gwd.ArrowLeft = function(event) {
-      Manual.sendValue['RC'] = 'turn_left'
-      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
-    };
-    gwd.ArrowRight = function(event) {
-      Manual.sendValue['RC'] = 'turn_right'
-      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
-    };
-    gwd.ArrowRelease = function(event) {
-      Manual.sendValue['RC'] = 'rest'
-      requireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue))
-    };
-  </script>
-  <script type="text/javascript" gwd-events="registration">
-    // Support code for event handling in Google Web Designer
-    // This script block is auto-generated. Please do not edit!
-    gwd.actions.events.registerEventHandlers = function(event) {
-      gwd.actions.events.addHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
-      gwd.actions.events.addHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
-      gwd.actions.events.addHandler('gwd-imagebutton_1', 'click', gwd.start, false);
-      gwd.actions.events.addHandler('logout', 'click', gwd.auto_LogoutClick, false);
-      gwd.actions.events.addHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
-      gwd.actions.events.addHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
-      gwd.actions.events.addHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.addHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
-      gwd.actions.events.addHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.addHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
-      gwd.actions.events.addHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.addHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
-      gwd.actions.events.addHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
-    };
-    gwd.actions.events.deregisterEventHandlers = function(event) {
-      gwd.actions.events.removeHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
-      gwd.actions.events.removeHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
-      gwd.actions.events.removeHandler('gwd-imagebutton_1', 'click', gwd.start, false);
-      gwd.actions.events.removeHandler('logout', 'click', gwd.auto_LogoutClick, false);
-      gwd.actions.events.removeHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
-      gwd.actions.events.removeHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
-      gwd.actions.events.removeHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.removeHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
-      gwd.actions.events.removeHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.removeHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
-      gwd.actions.events.removeHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
-      gwd.actions.events.removeHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
-      gwd.actions.events.removeHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
-    };
-    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
-    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
-  </script>
-  <script data-source="gwdimage_min.js" data-version="17" data-exports-type="gwd-image" src="gwdimage_min.js"></script>
-  <script data-source="gwdimagebutton_min.js" data-version="13" data-exports-type="gwd-imagebutton" src="gwdimagebutton_min.js"></script>
-  <script data-source="gwdattached_min.js" data-version="2" data-exports-type="gwd-attached" src="gwdattached_min.js"></script>
-  <script data-source="gwdtexthelper_min.js" data-version="18" data-exports-type="gwd-text-helper" src="gwdtexthelper_min.js"></script>
-  <script gwd-text-fitting-runtime="" src="gwd-text-fitting.js"></script>
-  <script gwd-text-effects-runtime="" src="gwd-text-effects.js"></script>
-</head>
+      .gwd-span-147h {
+        position: absolute;
+        height: 58px;
+        text-align: justify;
+        left: 50%;
+        top: 50%;
+        color: rgb(0, 0, 255);
+        line-height: 50px;
+        font-size: 17px;
+        transform-origin: 50% 50% 0px;
+        width: 112px;
+        transform: translate(-50%, -50%);
+        font-weight: normal;
+        font-family: Ubuntu;
+      }
+      @keyframes gwd-gen-filtgwdanimation_gwd-keyframes {
+        0% {
+          transform: translate(-50%, -100%) translate3d(754px, 5px, 0px) rotateZ(-175.504deg) scale3d(1.3856, 1, 1);
+          animation-timing-function: ease-in;
+        }
+        100% {
+          transform: translate(-50%, -100%) translate3d(0px, 0px, 0px) rotateZ(-0.2068deg) scale3d(1, 1, 1);
+          animation-timing-function: linear;
+        }
+      }
+      #page1_1.gwd-play-animation .gwd-gen-filtgwdanimation {
+        animation: 1.2s linear 0s 1 normal forwards running gwd-gen-filtgwdanimation_gwd-keyframes;
+      }
+      .gwd-page-ynra {
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-div-8hb6 {
+        width: 100%;
+        height: 100%;
+      }
+      .gwd-image-1vx9 {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 139px;
+        top: 156px;
+        opacity: 1;
+      }
+      .gwd-image-1y4k {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 139px;
+        top: 252px;
+      }
+      .gwd-image-42og {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 187px;
+        top: 204px;
+      }
+      .gwd-image-1kre {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 91px;
+        top: 204px;
+      }
+      .gwd-image-1nqs {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        left: 100%;
+        transform: translate(-100%, 0%) translate3d(-30px, 0px, 0px);
+        top: 30px;
+      }
+      .gwd-image-1nli {
+        position: absolute;
+        width: 96px;
+        height: 96px;
+        left: 100%;
+        transform: translate(-100%, 0%) translate3d(-20px, 0px, 0px);
+        top: 15px;
+      }
+      @media (width: 550px) and (height: 400px) {}
+    </style>
+    <script data-source="gwd_webcomponents_v1_min.js" data-version="2" data-exports-type="gwd_webcomponents_v1" src="gwd_webcomponents_v1_min.js"></script>
+    <script data-source="gwdpage_min.js" data-version="13" data-exports-type="gwd-page" src="gwdpage_min.js"></script>
+    <script data-source="gwdpagedeck_min.js" data-version="14" data-exports-type="gwd-pagedeck" src="gwdpagedeck_min.js"></script>
+    <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
+    <script type="text/javascript" gwd-events="handlers">
+      window.gwd = window.gwd || {};
+      gwd.auto_01_zf_logo_1Click = function(event) {
+        // GWD Predefined Function
+        gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1', 'fade', 1000, 'ease-in', 'top');
+      };
+      gwd.auto_01_zf_logo_1Touchstart = function(event) {
+        // GWD Predefined Function
+        gwd.actions.gwdPagedeck.goToNextPage('pagedeck', false, 'fade', 1000, 'ease-in', 'top');
+      };
+      gwd.start = function(event) {
+        showCode();
+      };
+      gwd.auto_Baseline_directions_car_black_48dpClick = function(event) {
+        // GWD Predefined Function
+        gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_2', 'fade', 500, 'linear', 'top');
+      };
+      gwd.auto_LogoutClick = function(event) {
+        // GWD Predefined Function
+        gwd.actions.gwdPagedeck.goToPage('pagedeck', 'page1_1', 'none', 1000, 'linear', 'top');
+      };
+      gwd.ArrowUp = function(event) {
+        Manual.upArrowEvent();
+      };
+      gwd.ArrowDown = function(event) {
+        Manual.downArrowEvent();
+      };
+      gwd.ArrowLeft = function(event) {
+        Manual.leftArrowEvent();
+      };
+      gwd.ArrowRight = function(event) {
+        Manual.rightArrowEvent();
+      };
+      gwd.ArrowRelease = function(event) {
+        Manual.stop();
+      };
+    </script>
+    <script type="text/javascript" gwd-events="registration">
+      // Support code for event handling in Google Web Designer
+      // This script block is auto-generated. Please do not edit!
+      gwd.actions.events.registerEventHandlers = function(event) {
+        gwd.actions.events.addHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
+        gwd.actions.events.addHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
+        gwd.actions.events.addHandler('gwd-imagebutton_1', 'click', gwd.start, false);
+        gwd.actions.events.addHandler('logout', 'click', gwd.auto_LogoutClick, false);
+        gwd.actions.events.addHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
+        gwd.actions.events.addHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
+        gwd.actions.events.addHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.addHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
+        gwd.actions.events.addHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.addHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
+        gwd.actions.events.addHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.addHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
+        gwd.actions.events.addHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
+      };
+      gwd.actions.events.deregisterEventHandlers = function(event) {
+        gwd.actions.events.removeHandler('01_zf_logo_1', 'click', gwd.auto_01_zf_logo_1Click, false);
+        gwd.actions.events.removeHandler('01_zf_logo_1', 'touchstart', gwd.auto_01_zf_logo_1Touchstart, false);
+        gwd.actions.events.removeHandler('gwd-imagebutton_1', 'click', gwd.start, false);
+        gwd.actions.events.removeHandler('logout', 'click', gwd.auto_LogoutClick, false);
+        gwd.actions.events.removeHandler('baseline_directions_car_black_48dp', 'click', gwd.auto_Baseline_directions_car_black_48dpClick, false);
+        gwd.actions.events.removeHandler('arrow_upward', 'touchstart', gwd.ArrowUp, false);
+        gwd.actions.events.removeHandler('arrow_upward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.removeHandler('arrow_downward', 'touchstart', gwd.ArrowDown, false);
+        gwd.actions.events.removeHandler('arrow_downward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.removeHandler('arrow_forward', 'touchstart', gwd.ArrowRight, false);
+        gwd.actions.events.removeHandler('arrow_forward', 'touchend', gwd.ArrowRelease, false);
+        gwd.actions.events.removeHandler('arrow_back', 'touchstart', gwd.ArrowLeft, false);
+        gwd.actions.events.removeHandler('arrow_back', 'touchend', gwd.ArrowRelease, false);
+      };
+      document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+      document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+    </script>
+    <script data-source="gwdimage_min.js" data-version="17" data-exports-type="gwd-image" src="gwdimage_min.js"></script>
+    <script data-source="gwdimagebutton_min.js" data-version="13" data-exports-type="gwd-imagebutton" src="gwdimagebutton_min.js"></script>
+    <script data-source="gwdattached_min.js" data-version="2" data-exports-type="gwd-attached" src="gwdattached_min.js"></script>
+    <script data-source="gwdtexthelper_min.js" data-version="18" data-exports-type="gwd-text-helper" src="gwdtexthelper_min.js"></script>
+    <script gwd-text-fitting-runtime="" src="gwd-text-fitting.js"></script>
+    <script gwd-text-effects-runtime="" src="gwd-text-effects.js"></script>
+  </head>
 
-<body id="blocklyArea" class="document-body">
-  <gwd-text-helper id="gwd-text-helper_1" fit-font-size-for-selector="[data-gwd-fit-font-size],[gwd-fitting-truncate]" data-gwd-fit-font-size="false"></gwd-text-helper>
-  <script gwd-served-sizes="" type="application/json">["550x400"]</script>
-  <gwd-pagedeck class="gwd-page-container" id="pagedeck" default-page="page1_1">
-    <gwd-page id="page1" class="gwd-page-wrapper page1-content gwd-lightbox gwd-page-1fuh" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="blockly">
-      <div class="gwd-page-content page1-content gwd-div-qe58">
-        <div id="blocklyDiv" style="position: absolute;"></div>
-        <script>
-          requireWebsocket.connect();
+  <body id="blocklyArea" class="document-body">
+    <gwd-text-helper id="gwd-text-helper_1" fit-font-size-for-selector="[data-gwd-fit-font-size],[gwd-fitting-truncate]" data-gwd-fit-font-size="false"></gwd-text-helper>
+    <script gwd-served-sizes="" type="application/json">["550x400"]</script>
+    <gwd-pagedeck class="gwd-page-container" id="pagedeck" default-page="page1_1">
+      <gwd-page id="page1" class="gwd-page-wrapper page1-content gwd-lightbox gwd-page-1fuh" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="blockly">
+        <div class="gwd-page-content page1-content gwd-div-qe58">
+          <div id="blocklyDiv" style="position: absolute;"></div>
+          <script>
+            requireWebsocket.connect();
 
-          Blockly.Blocks['drive_forward'] = {
-            init: function() {
-              this.appendDummyInput()
-                .appendField("Drive Straight");
-              this.setPreviousStatement(true, null);
-              this.setNextStatement(true, null);
-              this.setColour(230);
-              this.setTooltip('Sends a message to the robot to drive straight');
-              this.setHelpUrl('');
-            }
-          };
-
-          Blockly.JavaScript['drive_forward'] = function(block) {
-            var code = "Manual.sendValue['RC'] = 'forward';\nrequireWebsocket.reqWs.send(JSON.stringify(Manual.sendValue));\n";
-            return code;
-          };
-          
-
-          var toolbox = {
-            "kind": "categoryToolbox",
-            "contents": [
-              {
+            var toolbox = {
+              "kind": "categoryToolbox",
+              "contents": [{
                 "kind": "category",
                 "name": "Movement",
-                "contents": [
-                  {
-                    "kind": "block",
-                    "type": "drive_forward"
-                  }
-                ]
-              },
-              {
+                "contents": [{
+                  "kind": "block",
+                  "type": "drive_forward"
+                }, {
+                  "kind": "block",
+                  "type": "drive_backward"
+                }, {
+                  "kind": "block",
+                  "type": "turn_right"
+                }, {
+                  "kind": "block",
+                  "type": "turn_left"
+                }, {
+                  "kind": "block",
+                  "type": "stop_movement"
+                }]
+              }, {
+                "kind": "category",
+                "name": "Time",
+                "contents": [{
+                  "kind": "block",
+                  "type": "wait_seconds"
+                }]
+              }, {
                 "kind": "category",
                 "name": "Logic",
-                "contents": [
-                  {
-                    "kind": "block",
-                    "type": "controls_if"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "logic_compare"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "logic_operation"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "logic_boolean"
-                  }
-                ]
-              },
-              {
+                "contents": [{
+                  "kind": "block",
+                  "type": "controls_if"
+                }, {
+                  "kind": "block",
+                  "type": "logic_compare"
+                }, {
+                  "kind": "block",
+                  "type": "logic_operation"
+                }, {
+                  "kind": "block",
+                  "type": "logic_boolean"
+                }]
+              }, {
                 "kind": "category",
                 "name": "Loops",
-                "contents": [
-                  {
-                    "kind": "block",
-                    "type": "controls_repeat_ext"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "controls_whileUntil"
-                  }
-                ]
-              },
-              {
+                "contents": [{
+                  "kind": "block",
+                  "type": "controls_repeat_ext"
+                }, {
+                  "kind": "block",
+                  "type": "controls_whileUntil"
+                }]
+              }, {
                 "kind": "category",
                 "name": "Math",
-                "contents": [
-                  {
-                    "kind": "block",
-                    "type": "math_number"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "math_arithmetic"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "math_random_int"
-                  }
-                ]
-              },
-              {
+                "contents": [{
+                  "kind": "block",
+                  "type": "math_number"
+                }, {
+                  "kind": "block",
+                  "type": "math_arithmetic"
+                }, {
+                  "kind": "block",
+                  "type": "math_random_int"
+                }]
+              }, {
                 "kind": "category",
                 "name": "Text",
-                "contents": [
-                  {
-                    "kind": "block",
-                    "type": "text"
-                  },
-                  {
-                    "kind": "block",
-                    "type": "text_print"
-                  }
-                ]
-              },
-              {
+                "contents": [{
+                  "kind": "block",
+                  "type": "text"
+                }, {
+                  "kind": "block",
+                  "type": "text_print"
+                }]
+              }, {
                 "kind": "category",
                 "name": "Variables",
                 "custom": "VARIABLE",
                 "contents": []
+              }]
+            };
+
+            Blockly.Blocks['drive_forward'] = {
+              init: function() {
+                this.appendDummyInput()
+                  .appendField("Drive forward");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip('Sends a message to the robot to drive straight');
+                this.setHelpUrl('');
               }
-            ]
-          };
+            };
+
+            Blockly.JavaScript['drive_forward'] = function(block) {
+              var code = "Manual.upArrowEvent();\n";;
+              return code;
+            };
+
+            Blockly.Blocks['drive_backward'] = {
+              init: function() {
+                this.appendDummyInput()
+                  .appendField("Drive backward");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip('Sends a message to the robot to drive backward');
+                this.setHelpUrl('');
+              }
+            };
+
+            Blockly.JavaScript['drive_backward'] = function(block) {
+              var code = "Manual.downArrowEvent();\n;";
+              return code;
+            };
+
+            Blockly.Blocks['turn_right'] = {
+              init: function() {
+                this.appendDummyInput()
+                  .appendField("Turn right");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip('Sends a message to the robot to turn right');
+                this.setHelpUrl('');
+              }
+            };
+
+            Blockly.JavaScript['turn_right'] = function(block) {
+              var code = "Manual.rightArrowEvent();\n";
+              return code;
+            };
+
+            Blockly.Blocks['turn_left'] = {
+              init: function() {
+                this.appendDummyInput()
+                  .appendField("Turn left");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip('Sends a message to the robot to turn left');
+                this.setHelpUrl('');
+              }
+            };
+
+            Blockly.JavaScript['turn_left'] = function(block) {
+              var code = "Manual.leftArrowEvent();\n";
+              return code;
+            };
+
+            Blockly.Blocks['stop_movement'] = {
+              init: function() {
+                this.appendDummyInput()
+                  .appendField("Stop movement");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(250);
+                this.setTooltip('Sends a message to the robot to stop any movement');
+                this.setHelpUrl('');
+              }
+            };
+
+            Blockly.JavaScript['stop_movement'] = function(block) {
+              var code = "Manual.stop();\n";
+              return code;
+            };
 
 
-          var blocklyArea = document.getElementById('blocklyArea');
-          var blocklyDiv = document.getElementById('blocklyDiv');
-          var workspace = Blockly.inject('blocklyDiv', {
-            toolbox: toolbox
-          });
-          
-          function showCode() {
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-            var myInterpreter = new Interpreter(code);
-            //myInterpreter.run();
-            alert(code);
-            try {
-              eval(code);
-            } catch (e) {
-              alert(e);
+            const outputArea = document.getElementById('blocklyArea');
+            var blocklyDiv = document.getElementById('blocklyDiv');
+            var demoWorkspace = Blockly.inject('blocklyDiv', {
+              toolbox: toolbox
+            });
+            Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+            Blockly.JavaScript.addReservedWords('highlightBlock');
+
+            let myInterpreter = null;
+            let runnerPid = 0;
+
+            function initApi(interpreter, globalObject) {
+              alert(interpreter);
+              // Add an API function for the alert() block, generated for "text_print" blocks.
+              const wrapperAlert = function alert(text) {
+                text = arguments.length ? text : '';
+                 console.log('\n' + text);
+              };
+              interpreter.setProperty(globalObject, 'alert',
+                                      interpreter.createNativeFunction(wrapperAlert));
+
+              // Add an API function for the prompt() block.
+              const wrapperPrompt = function prompt(text) {
+                return window.prompt(text);
+              };
+              interpreter.setProperty(globalObject, 'prompt',
+                                      interpreter.createNativeFunction(wrapperPrompt));
+
+              // Add an API function for highlighting blocks.
+              const wrapper = function(id) {
+                id = String(id || '');
+                return highlightBlock(id);
+              };
+              interpreter.setProperty(globalObject, 'highlightBlock',
+                                      interpreter.createNativeFunction(wrapper));
+
+              // Add an API for the wait block.  See wait_block.js
+              initInterpreterWaitForSeconds(interpreter, globalObject);
             }
-          }
+
+            function highlightBlock(id) {
+              demoWorkspace.highlightBlock(id);
+            }
+
+            function resetStepUi(clearOutput) {
+              clearTimeout(runnerPid);
+              demoWorkspace.highlightBlock(null);       
+
+              if (clearOutput) {
+                outputArea.value = 'Program output:\n=================';
+              }
+              myInterpreter = null;
+            }
 
 
 
-          var onresize = function(e) {
-            // Compute the absolute coordinates and dimensions of blocklyArea.
-            var element = blocklyArea;
-            var x = 0;
-            var y = 0;
-            do {
-              x += element.offsetLeft;
-              y += element.offsetTop;
-              element = element.offsetParent;
-            } while (element);
-            // Position blocklyDiv over blocklyArea.
-            blocklyDiv.style.left = x + 'px';
-            blocklyDiv.style.top = y + 'px';
-            blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-            blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-            Blockly.svgResize(workspace);
+            function showCode() {
+                if (!myInterpreter) {
+                  // First statement of this code.
+                  // Clear the program output.
+                  resetStepUi(true);
+                  const latestCode = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+                  //runButton.disabled = 'disabled';
 
-            console.log('resize');
-          };
-          window.addEventListener('resize', onresize, false);
-          onresize();
-        </script>
-        <gwd-imagebutton id="gwd-imagebutton_1" up-image="assets/sports_score_FILL1_wght400_GRAD0_opsz48.png" over-image="" down-image="" scaling="contain" class="gwd-imagebutton-1svb" data-gwd-name="start"></gwd-imagebutton>
-      </div>
-    </gwd-page>
-    <gwd-page id="page1_2" class="gwd-page-wrapper gwd-lightbox gwd-page-ynra" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="manual">
-      <div class="gwd-page-content gwd-div-8hb6">
-        <gwd-image id="arrow_upward" source="assets/arrow_upward.png" scaling="contain" class="gwd-image-1vx9" alignment="center" oncontextmenu="return false;"></gwd-image>
-        <gwd-image id="arrow_downward" source="assets/arrow_downward.png" scaling="contain" class="gwd-image-1y4k" alignment="center" oncontextmenu="return false;"></gwd-image>
-        <gwd-image id="arrow_forward" source="assets/arrow_forward.png" scaling="contain" class="gwd-image-42og" alignment="center" oncontextmenu="return false;"></gwd-image>
-        <gwd-image id="arrow_back" source="assets/arrow_back.png" scaling="contain" class="gwd-image-1kre" alignment="center" oncontextmenu="return false;"></gwd-image>
-        <gwd-image id="logout" source="assets/logout.png" scaling="stretch" class="gwd-image-1nqs"></gwd-image>
-      </div>
-    </gwd-page>
-    <gwd-page id="page1_1" class="gwd-page-wrapper gwd-lightbox gwd-page-ch3c" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="welcomePage">
-      <div class="gwd-page-content gwd-div-9po6">
-        <gwd-image source="assets/01_zf_logo.png" scaling="contain" id="01_zf_logo_1" class="gwd-image-1hzg gwd-image-14cx gwd-gen-1mydgwdanimation"></gwd-image>
-        <gwd-image id="logo-utb-frontio-feed" source="assets/logo-utb-frontio-feed.png" scaling="contain" class="gwd-image-1t5c gwd-gen-filtgwdanimation"></gwd-image>
-        <h2 class="gwd-span-147h" gwd-text-effect="[{&amp;quot;id&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;drop-in&amp;quot;,&amp;quot;startTimeMs&amp;quot;:1000,&amp;quot;durationMs&amp;quot;:2000,&amp;quot;direction&amp;quot;:&amp;quot;in&amp;quot;,&amp;quot;tokenType&amp;quot;:&amp;quot;character&amp;quot;,&amp;quot;tokenGroups&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;tokens-per-group&amp;quot;,&amp;quot;value&amp;quot;:1},&amp;quot;shuffleSeed&amp;quot;:0,&amp;quot;easingData&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;linear&amp;quot;,&amp;quot;cubicBezierPoints&amp;quot;:[0.25,0.25,0.75,0.75]},&amp;quot;overlap&amp;quot;:0.38,&amp;quot;parameters&amp;quot;:{&amp;quot;dimension&amp;quot;:&amp;quot;Z&amp;quot;,&amp;quot;perspective&amp;quot;:20,&amp;quot;initialTranslation&amp;quot;:10,&amp;quot;opacity&amp;quot;:0}}]">Tap to START</h2>
-        <gwd-image id="baseline_directions_car_black_48dp" source="assets/baseline_directions_car_black_48dp.png" scaling="stretch" class="gwd-image-1nli"></gwd-image>
-      </div>
-    </gwd-page>
-  </gwd-pagedeck>
-  <script type="text/javascript" id="gwd-init-code">
-    (function() {
-      document.body.style.opacity = "0";
-      var pageDeck = document.getElementById('pagedeck');
-      /**
+                  // And then show generated code in an alert.
+                  // In a timeout to allow the outputArea.value to reset first.
+                  setTimeout(function() {
+                    console.log('Ready to execute the following code\n' +
+                          '===================================\n' + latestCode);
+
+                    // Begin execution
+                    myInterpreter = new Interpreter(latestCode, initApi);
+                    function runner() {
+                      if (myInterpreter) {
+                        const hasMore = myInterpreter.run();
+                        if (hasMore) {
+                          // Execution is currently blocked by some async call.
+                          // Try again later.
+                          runnerPid = setTimeout(runner, 10);
+                        } else {
+                          // Program is complete.
+                          console.log('\n\n<< Program complete >>') ;
+                          resetStepUi(false);
+                        }
+                      }
+                    }
+                    runner();
+                  }, 1);
+                  return;
+                }
+              }
+            
+
+
+           demoWorkspace.addChangeListener(function(event) {
+      if (!event.isUiEvent) {
+        // Something changed.  Interpreter needs to be reloaded.
+        resetStepUi(true);
+      }
+    });
+
+
+
+            var onresize = function(e) {
+              // Compute the absolute coordinates and dimensions of blocklyArea.
+              var element = blocklyArea;
+              var x = 0;
+              var y = 0;
+              do {
+                x += element.offsetLeft;
+                y += element.offsetTop;
+                element = element.offsetParent;
+              } while (element);
+              // Position blocklyDiv over blocklyArea.
+              blocklyDiv.style.left = x + 'px';
+              blocklyDiv.style.top = y + 'px';
+              blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+              blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+              Blockly.svgResize(demoWorkspace);
+
+              console.log('resize');
+            };
+            window.addEventListener('resize', onresize, false);
+            onresize();
+          </script>
+          <gwd-imagebutton id="gwd-imagebutton_1" up-image="assets/sports_score_FILL1_wght400_GRAD0_opsz48.png" over-image="" down-image="" scaling="contain" class="gwd-imagebutton-1svb" data-gwd-name="start"></gwd-imagebutton>
+        </div>
+      </gwd-page>
+      <gwd-page id="page1_2" class="gwd-page-wrapper gwd-lightbox gwd-page-ynra" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="manual">
+        <div class="gwd-page-content gwd-div-8hb6">
+          <gwd-image id="arrow_upward" source="assets/arrow_upward.png" scaling="contain" class="gwd-image-1vx9" alignment="center" oncontextmenu="return false;"></gwd-image>
+          <gwd-image id="arrow_downward" source="assets/arrow_downward.png" scaling="contain" class="gwd-image-1y4k" alignment="center" oncontextmenu="return false;"></gwd-image>
+          <gwd-image id="arrow_forward" source="assets/arrow_forward.png" scaling="contain" class="gwd-image-42og" alignment="center" oncontextmenu="return false;"></gwd-image>
+          <gwd-image id="arrow_back" source="assets/arrow_back.png" scaling="contain" class="gwd-image-1kre" alignment="center" oncontextmenu="return false;"></gwd-image>
+          <gwd-image id="logout" source="assets/logout.png" scaling="stretch" class="gwd-image-1nqs"></gwd-image>
+        </div>
+      </gwd-page>
+      <gwd-page id="page1_1" class="gwd-page-wrapper gwd-lightbox gwd-page-ch3c" data-gwd-width="100%" data-gwd-height="100%" data-gwd-name="welcomePage">
+        <div class="gwd-page-content gwd-div-9po6">
+          <gwd-image source="assets/01_zf_logo.png" scaling="contain" id="01_zf_logo_1" class="gwd-image-1hzg gwd-image-14cx gwd-gen-1mydgwdanimation"></gwd-image>
+          <gwd-image id="logo-utb-frontio-feed" source="assets/logo-utb-frontio-feed.png" scaling="contain" class="gwd-image-1t5c gwd-gen-filtgwdanimation"></gwd-image>
+          <h2 class="gwd-span-147h" gwd-text-effect="[{&amp;quot;id&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;drop-in&amp;quot;,&amp;quot;startTimeMs&amp;quot;:1000,&amp;quot;durationMs&amp;quot;:2000,&amp;quot;direction&amp;quot;:&amp;quot;in&amp;quot;,&amp;quot;tokenType&amp;quot;:&amp;quot;character&amp;quot;,&amp;quot;tokenGroups&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;tokens-per-group&amp;quot;,&amp;quot;value&amp;quot;:1},&amp;quot;shuffleSeed&amp;quot;:0,&amp;quot;easingData&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;linear&amp;quot;,&amp;quot;cubicBezierPoints&amp;quot;:[0.25,0.25,0.75,0.75]},&amp;quot;overlap&amp;quot;:0.38,&amp;quot;parameters&amp;quot;:{&amp;quot;dimension&amp;quot;:&amp;quot;Z&amp;quot;,&amp;quot;perspective&amp;quot;:20,&amp;quot;initialTranslation&amp;quot;:10,&amp;quot;opacity&amp;quot;:0}}]">Tap to START</h2>
+          <gwd-image id="baseline_directions_car_black_48dp" source="assets/baseline_directions_car_black_48dp.png" scaling="stretch" class="gwd-image-1nli"></gwd-image>
+        </div>
+      </gwd-page>
+    </gwd-pagedeck>
+    <script type="text/javascript" id="gwd-init-code">
+      (function() {
+        document.body.style.opacity = "0";
+        var pageDeck = document.getElementById('pagedeck');
+        /**
        * Handles the DOMContentLoaded event. The DOMContentLoaded event is
        * fired when the document has been completely loaded and parsed.
        */
 
-      function handleDomContentLoaded(event) {}
+        function handleDomContentLoaded(event) {}
 
-      /**
+        /**
        * Handles the WebComponentsReady event. This event is fired when all
        * custom elements have been registered and upgraded.
        */
-      function handleWebComponentsReady(event) {
-        document.body.style.opacity = "";
-        requestAnimationFrame(function() {
-          setTimeout(function() {
-            pageDeck.goToPage(pageDeck.getDefaultPage().id);
-          }, 1);
-        });
-      }
+        function handleWebComponentsReady(event) {
+          document.body.style.opacity = "";
+          requestAnimationFrame(function() {
+            setTimeout(function() {
+              pageDeck.goToPage(pageDeck.getDefaultPage().id);
+            }, 1);
+          });
+        }
 
-      window.addEventListener('DOMContentLoaded',
-        handleDomContentLoaded, false);
-      window.addEventListener('WebComponentsReady',
-        handleWebComponentsReady, false);
-    })();
-  </script>
-</body>
+        window.addEventListener('DOMContentLoaded',
+                                handleDomContentLoaded, false);
+        window.addEventListener('WebComponentsReady',
+                                handleWebComponentsReady, false);
+      })();
+    </script>
+  </body>
 
 </html>
